@@ -1,0 +1,502 @@
+import React from 'react'
+import './contact.css'
+import Container from 'react-bootstrap/esm/Container'
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import * as formik from 'formik';
+import * as yup from 'yup';
+import { userSchema } from '../../Constants/Form';
+import Image from 'react-bootstrap/esm/Image'
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
+const img = require('../../assets/contact-webapp.png');
+const Contact = () => {
+  const { Formik } = formik;
+  return (
+    <div>
+      <section id="services" className='block services-block'>
+        <Container fluid>
+          <div className='title-holder'>
+            <h2>Contact Us</h2>
+            <div className='subtitle'>GET IN TOUCH WITH US</div>
+          </div>
+          <Row>
+            <Col sm={6} className='image-holder'>
+              <Image src={img} />
+            </Col>
+
+            <Col>
+              <Formik
+                validationSchema={userSchema}
+                onSubmit={console.log}
+                initialValues={{
+                  firstName: '',
+                  lastName: '',
+                  company: '',
+                  mobile: '',
+                  email: '',
+                  designation: '',
+                  city: '',
+                  state: '',
+                  zip: '',
+                  file: null,
+                  terms: false,
+                }}
+              >
+                {({ handleSubmit, handleChange, values, touched, errors }) => (
+                  <Form noValidate onSubmit={handleSubmit}>
+                    <Row className="mb-3">
+                      <Form.Group
+                        as={Col}
+                        md="4"
+                        controlId="validationFormik101"
+                        className="position-relative"
+                      >
+                        <Form.Label>First name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="firstName"
+                          value={values.firstName}
+                          onChange={handleChange}
+                          isValid={touched.firstName && !errors.firstName}
+                        />
+                        <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="4"
+                        controlId="validationFormik102"
+                        className="position-relative"
+                      >
+                        <Form.Label>Last name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="lastName"
+                          value={values.lastName}
+                          onChange={handleChange}
+                          isValid={touched.lastName && !errors.lastName}
+                        />
+
+                        <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group as={Col} md="4" controlId="validationFormikUsername2">
+                        <Form.Label>Company Name</Form.Label>
+                        <InputGroup hasValidation>
+                          <Form.Control
+                            type="text"
+                            placeholder="Company"
+                            aria-describedby="inputGroupPrepend"
+                            name="company"
+                            value={values.company}
+                            onChange={handleChange}
+                            isInvalid={!!errors.company}
+                          />
+                          <Form.Control.Feedback type="invalid" tooltip>
+                            {errors.username}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+                      </Form.Group>
+
+                    </Row>
+                    <Row className='mb-3'>
+                      <Form.Group as={Col} md="4" controlId="validationFormik102"
+                        className="position-relative"
+                      >
+                        <Form.Label>Phone No</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="mobile"
+                          value={values.mobile}
+                          onChange={handleChange}
+                          isValid={touched.mobile && !errors.mobile}
+                        />
+                        <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+
+                      </Form.Group>
+                      <Form.Group as={Col} md="4" controlId="validationFormikUsername2">
+                        <Form.Label>E-Mail</Form.Label>
+                        <InputGroup hasValidation>
+                          <Form.Control
+                            type="text"
+                            placeholder="email"
+                            aria-describedby="inputGroupPrepend"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            isInvalid={!!errors.email}
+                          />
+                          <Form.Control.Feedback type="invalid" tooltip>
+                            {errors.email}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+
+                      </Form.Group>
+                      <Form.Group as={Col} md="4" controlId="validationFormikUsername2">
+                        <Form.Label>Designation</Form.Label>
+                        <InputGroup hasValidation>
+                          <Form.Control
+                            type="text"
+                            placeholder="Designation"
+                            aria-describedby="inputGroupPrepend"
+                            name="designation"
+                            value={values.email}
+                            onChange={handleChange}
+                            isInvalid={!!errors.designation}
+                          />
+                          <Form.Control.Feedback type="invalid" tooltip>
+                            {errors.designation}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+
+                      </Form.Group>
+                    </Row>
+                    <Row className="mb-3">
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        controlId="validationFormik103"
+                        className="position-relative"
+                      >
+                        <Form.Label>City</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="City"
+                          name="city"
+                          value={values.city}
+                          onChange={handleChange}
+                          isInvalid={!!errors.city}
+                        />
+
+                        <Form.Control.Feedback type="invalid" tooltip>
+                          {errors.city}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="3"
+                        controlId="validationFormik104"
+                        className="position-relative"
+                      >
+                        <Form.Label>State</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="State"
+                          name="state"
+                          value={values.state}
+                          onChange={handleChange}
+                          isInvalid={!!errors.state}
+                        />
+                        <Form.Control.Feedback type="invalid" tooltip>
+                          {errors.state}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="3"
+                        controlId="validationFormik105"
+                        className="position-relative"
+                      >
+                        <Form.Label>Zip</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Zip"
+                          name="zip"
+                          value={values.zip}
+                          onChange={handleChange}
+                          isInvalid={!!errors.zip}
+                        />
+
+                        <Form.Control.Feedback type="invalid" tooltip>
+                          {errors.zip}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Row>
+                    <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                      <Form.Control
+                        as="textarea"
+                        placeholder=""
+                        style={{ height: '100px' }}
+                      />
+                    </FloatingLabel>
+                    <Form.Group className="position-relative mb-3">
+                      <Form.Check
+                        required
+                        name="terms"
+                        label="Agree to terms and conditions"
+                        onChange={handleChange}
+                        isInvalid={!!errors.terms}
+                        feedback={errors.terms}
+                        feedbackType="invalid"
+                        id="validationFormik106"
+                        feedbackTooltip
+                      />
+                    </Form.Group>
+                    <Button type="submit">Submit form</Button>
+                  </Form>
+                )}
+              </Formik>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </div>
+  )
+}
+
+export default Contact
+
+
+
+
+import React from 'react'
+import './contact.css'
+import Container from 'react-bootstrap/esm/Container'
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import * as formik from 'formik';
+import * as yup from 'yup';
+import { userSchema } from '../../Constants/Form';
+import Image from 'react-bootstrap/esm/Image'
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
+const img = require('../../assets/contact-webapp.png');
+const Contact = () => {
+  const { Formik } = formik;
+  return (
+    <div>
+      <section id="services" className='block services-block'>
+        <Container fluid>
+          <div className='title-holder'>
+            <h2>Contact Us</h2>
+            <div className='subtitle'>GET IN TOUCH WITH US</div>
+          </div>
+          <Row>
+            <Col sm={6} className='image-holder'>
+              <Image src={img} />
+            </Col>
+
+            <Col>
+              <Formik
+                validationSchema={userSchema}
+                onSubmit={console.log}
+                initialValues={{
+                  firstName: '',
+                  lastName: '',
+                  company: '',
+                  mobile: '',
+                  email: '',
+                  designation: '',
+                  city: '',
+                  state: '',
+                  zip: '',
+                  file: null,
+                  terms: false,
+                }}
+              >
+                {({ handleSubmit, handleChange, values, touched, errors }) => (
+                  <Form noValidate onSubmit={handleSubmit}>
+                    <Row className="mb-3">
+                      <Form.Group
+                        as={Col}
+                        md="4"
+                        controlId="validationFormik101"
+                        className="position-relative"
+                      >
+                        <Form.Label>First name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="firstName"
+                          value={values.firstName}
+                          onChange={handleChange}
+                          isValid={touched.firstName && !errors.firstName}
+                        />
+                        <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="4"
+                        controlId="validationFormik102"
+                        className="position-relative"
+                      >
+                        <Form.Label>Last name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="lastName"
+                          value={values.lastName}
+                          onChange={handleChange}
+                          isValid={touched.lastName && !errors.lastName}
+                        />
+
+                        <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group as={Col} md="4" controlId="validationFormikUsername2">
+                        <Form.Label>Company Name</Form.Label>
+                        <InputGroup hasValidation>
+                          <Form.Control
+                            type="text"
+                            placeholder="Company"
+                            aria-describedby="inputGroupPrepend"
+                            name="company"
+                            value={values.company}
+                            onChange={handleChange}
+                            isInvalid={!!errors.company}
+                          />
+                          <Form.Control.Feedback type="invalid" tooltip>
+                            {errors.username}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+                      </Form.Group>
+
+                    </Row>
+                    <Row className='mb-3'>
+                      <Form.Group as={Col} md="4" controlId="validationFormik102"
+                        className="position-relative"
+                      >
+                        <Form.Label>Phone No</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="mobile"
+                          value={values.mobile}
+                          onChange={handleChange}
+                          isValid={touched.mobile && !errors.mobile}
+                        />
+                        <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
+
+                      </Form.Group>
+                      <Form.Group as={Col} md="4" controlId="validationFormikUsername2">
+                        <Form.Label>E-Mail</Form.Label>
+                        <InputGroup hasValidation>
+                          <Form.Control
+                            type="text"
+                            placeholder="email"
+                            aria-describedby="inputGroupPrepend"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            isInvalid={!!errors.email}
+                          />
+                          <Form.Control.Feedback type="invalid" tooltip>
+                            {errors.email}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+
+                      </Form.Group>
+                      <Form.Group as={Col} md="4" controlId="validationFormikUsername2">
+                        <Form.Label>Designation</Form.Label>
+                        <InputGroup hasValidation>
+                          <Form.Control
+                            type="text"
+                            placeholder="Designation"
+                            aria-describedby="inputGroupPrepend"
+                            name="designation"
+                            value={values.email}
+                            onChange={handleChange}
+                            isInvalid={!!errors.designation}
+                          />
+                          <Form.Control.Feedback type="invalid" tooltip>
+                            {errors.designation}
+                          </Form.Control.Feedback>
+                        </InputGroup>
+
+                      </Form.Group>
+                    </Row>
+                    <Row className="mb-3">
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        controlId="validationFormik103"
+                        className="position-relative"
+                      >
+                        <Form.Label>City</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="City"
+                          name="city"
+                          value={values.city}
+                          onChange={handleChange}
+                          isInvalid={!!errors.city}
+                        />
+
+                        <Form.Control.Feedback type="invalid" tooltip>
+                          {errors.city}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="3"
+                        controlId="validationFormik104"
+                        className="position-relative"
+                      >
+                        <Form.Label>State</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="State"
+                          name="state"
+                          value={values.state}
+                          onChange={handleChange}
+                          isInvalid={!!errors.state}
+                        />
+                        <Form.Control.Feedback type="invalid" tooltip>
+                          {errors.state}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        md="3"
+                        controlId="validationFormik105"
+                        className="position-relative"
+                      >
+                        <Form.Label>Zip</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Zip"
+                          name="zip"
+                          value={values.zip}
+                          onChange={handleChange}
+                          isInvalid={!!errors.zip}
+                        />
+
+                        <Form.Control.Feedback type="invalid" tooltip>
+                          {errors.zip}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Row>
+                    <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                      <Form.Control
+                        as="textarea"
+                        placeholder=""
+                        style={{ height: '100px' }}
+                      />
+                    </FloatingLabel>
+                    <Form.Group className="position-relative mb-3">
+                      <Form.Check
+                        required
+                        name="terms"
+                        label="Agree to terms and conditions"
+                        onChange={handleChange}
+                        isInvalid={!!errors.terms}
+                        feedback={errors.terms}
+                        feedbackType="invalid"
+                        id="validationFormik106"
+                        feedbackTooltip
+                      />
+                    </Form.Group>
+                    <Button type="submit">Submit form</Button>
+                  </Form>
+                )}
+              </Formik>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </div>
+  )
+}
+
+export default Contact
